@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Ladeskab___Mobile_charging_station
 {
-    class Display
+    public class Display
     {
+        public void DisplayMessage(string message)
+        {
+            Console.WriteLine(message);
+        }
     }
 }

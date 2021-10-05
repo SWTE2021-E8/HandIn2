@@ -8,5 +8,6 @@ namespace Ladeskab___Mobile_charging_station
 {
     class ChargeControl
     {
+
     }
 }

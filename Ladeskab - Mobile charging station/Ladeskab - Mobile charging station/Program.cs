@@ -7,7 +7,14 @@ namespace Ladeskab___Mobile_charging_station
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ILogger logger = new Logger();
+            IRfidReader rfidReader = new RfidReader();
+
+            StationControl stationControl = new StationControl(logger, rfidReader);
+            var tmp = logger.GetLog();
+
+            Console.WriteLine(tmp[0]);
         }
     }
+
 }

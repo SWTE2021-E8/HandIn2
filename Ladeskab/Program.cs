@@ -1,11 +1,17 @@
 ﻿using System;
 
-namespace Ladeskab {
+namespace Ladeskab
+{
     class Program
     {
         static void Main(string[] args)
         {
-				// Assemble your system here from all the classes
+            // Assemble your system here from all the classes
+            Door door = new Door();
+            Display display = new Display();
+            ChargeControl chargeControl = new ChargeControl();
+            StationControl stationControl = new StationControl(door, chargeControl, display);
+            RFIDReader rfidReader = new RFIDReader(stationControl);
 
             bool finish = false;
             do
@@ -45,4 +51,4 @@ namespace Ladeskab {
         }
     }
 }
-}
+

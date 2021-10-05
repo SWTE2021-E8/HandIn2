@@ -24,6 +24,7 @@ namespace Ladeskab___Mobile_charging_station
         private void HandleRfidRecieved(object sender, RfidDetectedEventArgs e)
         {
             logger.AddToLog("Recieved rfid: " + e.Rfid);
+
         }
     }
 }

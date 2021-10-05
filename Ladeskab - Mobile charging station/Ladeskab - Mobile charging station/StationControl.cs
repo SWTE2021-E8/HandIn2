@@ -17,6 +17,7 @@ namespace Ladeskab___Mobile_charging_station
             this.rfidReader = rfidReader;
 
             rfidReader.RfidDetectedEvent += HandleRfidRecieved;
+            
             rfidReader.GetRfid("1100100101");
         }
 

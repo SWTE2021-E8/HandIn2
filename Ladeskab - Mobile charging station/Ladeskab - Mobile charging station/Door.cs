@@ -10,30 +10,53 @@ namespace Ladeskab___Mobile_charging_station
     {
         public bool State { get; set; }
     }
+    public class LockStateChangedEventArgs : EventArgs
+    {
+        public bool State { get; set; }
+    }
 
     public class Door : IDoor
     {
         bool currentState;
         bool isLocked;
         public event EventHandler<DoorStateChangedEventArgs> DoorStateChangedEvent;
+        public event EventHandler<LockStateChangedEventArgs> LockStateChangedEvent;
 
         public void SetDoorState(bool state)
         {
-            if(state != currentState)
+            if (!isLocked)
             {
-                OnDoorOpen(new DoorStateChangedEventArgs { State = state });
-                currentState = state;
+                if (state != currentState)
+                {
+                    OnDoorStateChanged(new DoorStateChangedEventArgs { State = state });
+                    currentState = state;
+                }
             }
+            else throw new InvalidOperationException("Door is currently locked, unlock it first");
+        }
+        public void SetLockState(bool state)
+        {
+            if (state != isLocked)
+            {
+                OnLockStateChanged(new LockStateChangedEventArgs { State = state });
+                isLocked = state;
+            }
+            else throw new InvalidOperationException("Lock is already set to given state");
         }
         
-        protected virtual void OnDoorOpen(DoorStateChangedEventArgs e)
+        protected virtual void OnDoorStateChanged(DoorStateChangedEventArgs e)
         {
             DoorStateChangedEvent?.Invoke(this, e);
+        }
+        protected virtual void OnLockStateChanged(LockStateChangedEventArgs e)
+        {
+            LockStateChangedEvent?.Invoke(this, e);
         }
     }
 
     public interface IDoor
     {
         event EventHandler<DoorStateChangedEventArgs> DoorStateChangedEvent;
+        event EventHandler<LockStateChangedEventArgs> LockStateChangedEvent;
     }
 }

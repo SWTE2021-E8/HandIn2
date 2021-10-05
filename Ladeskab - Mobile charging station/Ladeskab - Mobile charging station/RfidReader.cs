@@ -11,20 +11,20 @@ namespace Ladeskab___Mobile_charging_station
         public string Rfid { get; set; }
     }
 
-    class RfidReader : IRfidReader
+    public class RfidReader : IRfidReader
     {
         string lastRfidRecieved;
         public event EventHandler<RfidDetectedEventArgs> RfidDetectedEvent;
         public void GetRfid(string rfidRecieved)
         {
-            if (lastRfidRecieved != rfidRecieved)
+            if (rfidRecieved != lastRfidRecieved)
             {
                 OnRfidDetected(new RfidDetectedEventArgs { Rfid = rfidRecieved });
                 lastRfidRecieved = rfidRecieved;
             }
         }
 
-        protected private void OnRfidDetected(RfidDetectedEventArgs e)
+        protected virtual void OnRfidDetected(RfidDetectedEventArgs e)
         {
             RfidDetectedEvent?.Invoke(this, e);
         }

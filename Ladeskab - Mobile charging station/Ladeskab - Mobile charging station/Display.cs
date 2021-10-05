@@ -10,7 +10,7 @@ namespace Ladeskab___Mobile_charging_station
     {
         public void DisplayMessage(string message)
         {
-            Console.WriteLine(message);
+            Console.WriteLine("Display Message: " + message);
         }
     }
 }

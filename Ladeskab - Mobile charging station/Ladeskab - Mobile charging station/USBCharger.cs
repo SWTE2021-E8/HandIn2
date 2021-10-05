@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Ladeskab___Mobile_charging_station
 {
-    class USBCharger
+    class USBCharger    
     {
+        
     }
 }

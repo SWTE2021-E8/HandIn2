@@ -40,6 +40,8 @@ namespace Ladeskab
 
             //Tilføjer rfid handleren til rfid event
             _rfidReader.RfidDetectedEvent += RfidDetected;
+            _door.DoorValueEvent += DoorOpened;
+            _door.DoorValueEvent += DoorClosed;
         }
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen

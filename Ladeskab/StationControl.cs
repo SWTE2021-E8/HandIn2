@@ -105,17 +105,24 @@ namespace Ladeskab
             throw new NotImplementedException();
         }
 
+
         // Her mangler de andre trigger handlere
-        private void DoorOpen(object sender, DoorEventArgs e)
+        private void DoorOpened(object sender, DoorEventArgs e)
         {
             DoorState doorState = e.Doorstate;
 
-            if(doorState == DoorState.Dooropening)
+            if (doorState == DoorState.Dooropening)
             {
                 _display.DisplayMsg("Tilslut telefon");
             }
 
         }
+
+        void IStationControl.DoorOpened()
+        {
+            throw new NotImplementedException();
+        }
+
         private void DoorClosed(object sender, DoorEventArgs e)
         {
             DoorState doorState = e.Doorstate;
@@ -124,6 +131,11 @@ namespace Ladeskab
             {
                 _display.DisplayMsg("Indlæs RFID");
             }
+        }
+
+        void IStationControl.DoorClosed()
+        {
+            throw new NotImplementedException();
         }
     }
 }

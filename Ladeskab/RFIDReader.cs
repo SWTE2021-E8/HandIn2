@@ -11,14 +11,10 @@ namespace Ladeskab {
             stationControl = control;
         }
 
-<<<<<<< Updated upstream
-        public void OnRfidRead(int id) {
-	}
-
         public void ScanCard(int id)
         {
             throw new NotImplementedException();
-=======
+        }
         public void OnRfidRead(int id) 
         {
             HandleRfidDetected(new RFIDDetectedEventArgs { Rfid = id });
@@ -29,7 +25,7 @@ namespace Ladeskab {
         protected virtual void HandleRfidDetected(RFIDDetectedEventArgs e)
         {
             RfidDetectedEvent?.Invoke(this, e);
->>>>>>> Stashed changes
+
         }
     }
 }

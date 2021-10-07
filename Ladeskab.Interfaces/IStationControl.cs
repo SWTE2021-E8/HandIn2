@@ -1,6 +1,8 @@
 using System;
 
 namespace Ladeskab.Interfaces {
-    public interface IStationControl {
+    public interface IStationControl
+    {
+        void RfidDetected(int id);
     }
 }

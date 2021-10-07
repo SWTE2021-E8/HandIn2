@@ -11,5 +11,10 @@ namespace Ladeskab {
 
         public void OnRfidRead(int id) {
 	}
+
+        public void ScanCard(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

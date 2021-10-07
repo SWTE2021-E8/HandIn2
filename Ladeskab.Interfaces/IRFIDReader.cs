@@ -2,6 +2,7 @@ using System;
 
 namespace Ladeskab.Interfaces {
     public interface IRFIDReader {
-        public void OnRfidRead(int id);
+        void OnRfidRead(int id);
+        void ScanCard(int id);
     }
 }

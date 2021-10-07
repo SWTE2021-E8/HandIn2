@@ -11,14 +11,9 @@ namespace Ladeskab
             IDoor door = new Door();
             IDisplay display = new Display();
             IChargeControl chargeControl = new ChargeControl();
-<<<<<<< Updated upstream
             IRFIDReader rfidReader = new RFIDReader();
             IStationControl stationControl = new StationControl(door, chargeControl, display, rfidReader);
 
-=======
-            IStationControl stationControl = new StationControl(door, chargeControl, display, rfidReader);
-            IRFIDReader rfidReader = new RFIDReader(stationControl);
->>>>>>> Stashed changes
 
             bool finish = false;
             do

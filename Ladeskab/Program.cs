@@ -8,11 +8,12 @@ namespace Ladeskab
         static void Main(string[] args)
         {
             // Assemble your system here from all the classes
-            IDoor door = new Door();
-            IDisplay display = new Display();
-            IChargeControl chargeControl = new ChargeControl();
-            IRFIDReader rfidReader = new RFIDReader();
-            IStationControl stationControl = new StationControl(door, chargeControl, display, rfidReader);
+            Door door = new Door();
+            Display display = new Display();
+            UsbChargerSimulator charger = new UsbChargerSimulator();
+            ChargeControl chargeControl = new ChargeControl(charger);
+            RFIDReader rfidReader = new RFIDReader();
+            StationControl stationControl = new StationControl(door, chargeControl, display, rfidReader);
 
 
             bool finish = false;

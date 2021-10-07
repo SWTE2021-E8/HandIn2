@@ -1,6 +1,7 @@
 using System;
 
-namespace Ladeskab.Interfaces {
+namespace Ladeskab.Interfaces
+{
 
     public enum DoorState
     {
@@ -9,11 +10,14 @@ namespace Ladeskab.Interfaces {
         Locked,
         Unlocked
     }
+
     public class DoorEventArgs : EventArgs
     {
         public DoorState Doorstate { get; set; }
     }
-    public interface IDoor {
+
+    public interface IDoor
+    {
 
         event EventHandler<DoorEventArgs> DoorValueEvent;
         DoorState StateValue { get; }

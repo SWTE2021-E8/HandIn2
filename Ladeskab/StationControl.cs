@@ -29,7 +29,8 @@ namespace Ladeskab
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
         // Her mangler constructor
-	public StationControl(IDoor door, IChargeControl charger, IDisplay display, IRFIDReader rfidReader) {
+        public StationControl(IDoor door, IChargeControl charger, IDisplay display, IRFIDReader rfidReader)
+        {
             _state = LadeskabState.Available;
             _door = door;
             _charger = charger;
@@ -93,9 +94,10 @@ namespace Ladeskab
                     {
                         Console.WriteLine("Forkert RFID tag");
                     }
-
                     break;
+
             }
+
         }
 
         void IStationControl.RfidDetected(int id)
@@ -104,5 +106,24 @@ namespace Ladeskab
         }
 
         // Her mangler de andre trigger handlere
+        private void DoorOpen(object sender, DoorEventArgs e)
+        {
+            DoorState doorState = e.Doorstate;
+
+            if(doorState == DoorState.Dooropening)
+            {
+                _display.DisplayMsg("Tilslut telefon");
+            }
+
+        }
+        private void DoorClosed(object sender, DoorEventArgs e)
+        {
+            DoorState doorState = e.Doorstate;
+
+            if (doorState == DoorState.DoorClosing)
+            {
+                _display.DisplayMsg("Indlæs RFID");
+            }
+        }
     }
 }

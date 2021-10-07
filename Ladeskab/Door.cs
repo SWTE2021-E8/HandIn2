@@ -14,6 +14,7 @@ namespace Ladeskab
 
         public Door()
         {
+            StateValue = DoorState.Unlocked;
         }
 
         public void OnDoorOpen()

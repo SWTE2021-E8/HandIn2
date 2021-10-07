@@ -20,19 +20,6 @@ namespace Ladeskab {
 		public void StopCharge() {
 			_charger.StopCharge();
 		}
-
-		/* Jeg kan sku ik se hvad de skal bruges til...
-		 * Charge control er jo kun afhængig af om der er 
-		 * en telefon forbundet eller ej, hvilket den får af connected 
-		 */
-
-		public void OnDoorOpen() {
-
-		}
-
-		public void OnDoorClose() {
-
-		}
 		
     }
 }

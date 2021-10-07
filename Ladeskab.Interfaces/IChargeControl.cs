@@ -6,7 +6,5 @@ namespace Ladeskab.Interfaces {
         public bool Connected();
         public void StartCharge();
         public void StopCharge();
-        public void OnDoorOpen();
-        public void OnDoorClose();
     }
 }

@@ -3,23 +3,21 @@ using Ladeskab.Interfaces;
 
 namespace Ladeskab {
     public class Door : IDoor {
-		string DoorStatus = "Open";
-		string LockStatus = "unlocked";
 
 	public void OnDoorOpen() {
-			System.Console.WriteLine(DoorStatus = "Door Open");
+			System.Console.WriteLine("Door Open");
 	}
 
 	public void OnDoorClose() {
-			System.Console.WriteLine(DoorStatus = "Door Close");
+			System.Console.WriteLine("Door Close");
 		}
 		
 	public void LockDoor() {
-			System.Console.WriteLine(LockStatus = "Door Locked");
+			System.Console.WriteLine("Door Locked");
 	}
 
 	public void UnlockDoor() {
-			System.Console.WriteLine(LockStatus = "Door Unlocked");
+			System.Console.WriteLine("Door Unlocked");
 	}
     }
 }

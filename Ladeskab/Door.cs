@@ -7,19 +7,19 @@ namespace Ladeskab {
 		string LockStatus = "unlocked";
 
 	public void OnDoorOpen() {
-			DoorStatus = "Door Open";
+			System.Console.WriteLine(DoorStatus = "Door Open");
 	}
 
 	public void OnDoorClose() {
-			DoorStatus = "Door Close";
+			System.Console.WriteLine(DoorStatus = "Door Close");
 		}
-
+		
 	public void LockDoor() {
-			LockStatus = "Door Locked";
+			System.Console.WriteLine(LockStatus = "Door Locked");
 	}
 
 	public void UnlockDoor() {
-			LockStatus = "Door Unlocked";
+			System.Console.WriteLine(LockStatus = "Door Unlocked");
 	}
     }
 }

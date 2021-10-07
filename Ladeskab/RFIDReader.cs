@@ -6,9 +6,8 @@ namespace Ladeskab {
         public event EventHandler<RFIDDetectedEventArgs> RfidDetectedEvent;
         private IStationControl stationControl;
         public int lastRfidRecieved { get; private set; }
-        public RFIDReader(IStationControl control) 
+        public RFIDReader() 
         {
-            stationControl = control;
         }
 
         public void ScanCard(int id)

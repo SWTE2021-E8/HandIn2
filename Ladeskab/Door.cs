@@ -32,7 +32,7 @@ namespace Ladeskab {
 				System.Console.WriteLine("Door closed");
 			}
 		}
-		s
+		
 	public void LockDoor() {
 			if (StateValue == DoorState.DoorClosing)
             {

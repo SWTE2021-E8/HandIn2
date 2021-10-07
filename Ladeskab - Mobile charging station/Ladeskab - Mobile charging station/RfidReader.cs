@@ -33,6 +33,6 @@ namespace Ladeskab___Mobile_charging_station
     public interface IRfidReader
     {
         public void GetRfid(string rfidRecieved);
-        public event EventHandler<RfidDetectedEventArgs> RfidDetectedEvent;
+        public event EventHandler<RFIDDetectedEventArgs> RfidDetectedEvent;
     }
 }

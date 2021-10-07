@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ladeskab.Interfaces;
+using System;
 
 namespace Ladeskab
 {
@@ -7,11 +8,11 @@ namespace Ladeskab
         static void Main(string[] args)
         {
             // Assemble your system here from all the classes
-            Door door = new Door();
-            Display display = new Display();
-            ChargeControl chargeControl = new ChargeControl();
-            StationControl stationControl = new StationControl(door, chargeControl, display);
-            RFIDReader rfidReader = new RFIDReader(stationControl);
+            IDoor door = new Door();
+            IDisplay display = new Display();
+            IChargeControl chargeControl = new ChargeControl();
+            IStationControl stationControl = new StationControl(door, chargeControl, display);
+            IRFIDReader rfidReader = new RFIDReader(stationControl);
 
             bool finish = false;
             do

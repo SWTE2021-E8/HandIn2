@@ -2,27 +2,26 @@ using System;
 using Ladeskab.Interfaces;
 
 namespace Ladeskab {
-
     public class ChargeControl : IChargeControl {
 
-	public bool Connected() {
-            return true;
-        }
+		public bool Connected() {
+			return true;
+		}
 
-	public void StartCharge() {
+		public void StartCharge() {
 
-	}
+		}
 
-	public void StopCharge() {
+		public void StopCharge() {
 
-	}
+		}
 
-	public void OnDoorOpen() {
+		public void OnDoorOpen() {
 
-	}
+		}
 
-	public void OnDoorClose() {
+		public void OnDoorClose() {
 
-	}
+		}
     }
 }

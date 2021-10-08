@@ -5,8 +5,7 @@ namespace Ladeskab.Interfaces
 
     public enum DoorState
     {
-        Dooropening,
-        DoorClosing,
+        DoorOpen,
         Locked,
         Unlocked
     }

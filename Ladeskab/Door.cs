@@ -22,28 +22,25 @@ namespace Ladeskab
             //stationControl.Open
             if (StateValue == DoorState.Unlocked)
             {
-                StateValue = DoorState.Dooropening;
+                StateValue = DoorState.DoorOpen;
                 OnNewDoorEvent();
-                System.Console.WriteLine("Door Open");
             }
         }
 
         public void OnDoorClose()
         {
-            if (StateValue == DoorState.Dooropening)
+            if (StateValue == DoorState.DoorOpen)
             {
-                StateValue = DoorState.DoorClosing;
+                StateValue = DoorState.Unlocked;
                 OnNewDoorEvent();
-                System.Console.WriteLine("Door closed");
             }
         }
 
         public void LockDoor()
         {
-            if (StateValue == DoorState.DoorClosing)
+            if (StateValue == DoorState.Unlocked)
             {
                 StateValue = DoorState.Locked;
-                System.Console.WriteLine("Door Locked");
             }
         }
 
@@ -52,7 +49,6 @@ namespace Ladeskab
             if (StateValue == DoorState.Locked)
             {
                 StateValue = DoorState.Unlocked;
-                System.Console.WriteLine("Door Unlocked");
             }
         }
 

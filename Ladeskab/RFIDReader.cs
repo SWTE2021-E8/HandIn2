@@ -12,21 +12,15 @@ namespace Ladeskab
         {
         }
 
-        public void ScanCard(int id)
-        {
-            throw new NotImplementedException();
-        }
         public void OnRfidRead(int id)
         {
             HandleRfidDetected(new RFIDDetectedEventArgs { Rfid = id });
             lastRfidRecieved = id;
-
         }
 
         protected virtual void HandleRfidDetected(RFIDDetectedEventArgs e)
         {
             RfidDetectedEvent?.Invoke(this, e);
-
         }
     }
 }

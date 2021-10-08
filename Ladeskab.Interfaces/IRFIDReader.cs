@@ -1,13 +1,15 @@
 using System;
 
-namespace Ladeskab.Interfaces {
+namespace Ladeskab.Interfaces
+{
     public class RFIDDetectedEventArgs : EventArgs
     {
         public int Rfid { get; set; }
     }
-    public interface IRFIDReader {
+
+    public interface IRFIDReader
+    {
         void OnRfidRead(int id);
-        void ScanCard(int id);
         public event EventHandler<RFIDDetectedEventArgs> RfidDetectedEvent;
     }
 }

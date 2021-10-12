@@ -5,7 +5,7 @@ namespace Ladeskab
 {
     public class ChargeControl : IChargeControl
     {
-        private enum ChargeControlState
+        public enum ChargeControlState
         {
             Idle,
             Charging,
@@ -16,7 +16,7 @@ namespace Ladeskab
         IDisplay _display;
         public bool Connected { get { return _charger.Connected; } }
         public double Current { get; private set; }
-        private ChargeControlState chargeControlState;
+        public ChargeControlState chargeControlState { private set; get; }
 
         public ChargeControl(IUsbCharger charger, IDisplay display)
         {

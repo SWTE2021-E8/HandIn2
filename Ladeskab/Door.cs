@@ -6,7 +6,6 @@ namespace Ladeskab
     public class Door : IDoor
     {
 
-        private IStationControl stationControl;
 
         public DoorState StateValue { get; private set; }
 

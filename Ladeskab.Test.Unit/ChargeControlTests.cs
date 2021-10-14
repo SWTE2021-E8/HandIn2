@@ -45,8 +45,8 @@ namespace Ladeskab.Test.Unit
                 currentEventArgs.Current = 100;
 
                 charger.CurrentValueEvent += Raise.EventWith(currentEventArgs);
-                
-                Assert.AreEqual(100, _uut.Current);
+
+                Assert.AreEqual(100, _uut.Current);                                                                      
             }
             [Test]
             public void ChargeControl_ChargeControlState_ReturnCharging()

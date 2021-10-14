@@ -85,5 +85,35 @@ namespace Ladeskab.Test.Unit
             Door.DoorValueEvent += Raise.EventWith(new object(), EventArg);
             Display.Received().DisplayMsg("Tilslut telefon");
         }
+        [Test]
+        public void TestLadeSkabClosedDoor()
+        {
+
+            ChargeControl.Connected.Returns(true);
+            var EventArg = new DoorEventArgs();
+            EventArg.Doorstate = DoorState.DoorOpen;
+            Door.DoorValueEvent += Raise.EventWith(new object(), EventArg);
+            EventArg.Doorstate = DoorState.Unlocked;
+            Door.DoorValueEvent += Raise.EventWith(new object(), EventArg);
+            Display.Received().DisplayMsg("Indlæs RFID");
+        }
+
+        [Test]
+        public void TestLadeSkabIgnoreRFIDwhenOpened()
+        {
+
+            ChargeControl.Connected.Returns(true);
+            var EventArgDoor = new DoorEventArgs();
+            EventArgDoor.Doorstate = DoorState.DoorOpen;
+            Door.DoorValueEvent += Raise.EventWith(new object(), EventArgDoor);
+
+            Display.Received().DisplayMsg("Tilslut telefon");
+
+            var EventArgRfid = new RFIDDetectedEventArgs();
+            EventArgRfid.Rfid = 1;
+            Reader.RfidDetectedEvent += Raise.EventWith(new object(), EventArgRfid);
+
+            Assert.AreEqual(DoorState.DoorOpen,Door.StateValue);
+        }
     }
 }

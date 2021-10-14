@@ -19,10 +19,16 @@ namespace Ladeskab.Test.Unit
             uut = new Door();
         }
 
-
         [Test]
         public void DoorIsUnlockedAtStart()
         {
+            Assert.AreEqual(uut.StateValue, DoorState.Unlocked);
+        }
+
+        [Test]
+        public void DoorRemainsUnlockedWhenUnlocked()
+        {
+            uut.UnlockDoor();
             Assert.AreEqual(uut.StateValue, DoorState.Unlocked);
         }
 
@@ -38,8 +44,17 @@ namespace Ladeskab.Test.Unit
         }
 
         [Test]
-        public void DoorClosed()
+        public void Door_Try_Close_When_Unlocked()
         {
+            uut.OnDoorClose();
+            Assert.AreEqual(uut.StateValue, DoorState.Unlocked);
+        }
+
+        [Test]
+        public void Door_Close_When_Opened()
+        {
+            uut.OnDoorOpen();
+            Assert.AreEqual(uut.StateValue, DoorState.DoorOpen);
             uut.OnDoorClose();
             Assert.AreEqual(uut.StateValue, DoorState.Unlocked);
         }
@@ -72,6 +87,7 @@ namespace Ladeskab.Test.Unit
             args.Doorstate = DoorState.Locked;
             Assert.AreEqual(DoorState.Locked, args.Doorstate);
         }
+
     }
 
 }

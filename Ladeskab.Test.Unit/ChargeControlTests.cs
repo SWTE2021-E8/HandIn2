@@ -103,8 +103,12 @@ namespace Ladeskab.Test.Unit
             public void ChargeControl_Stops_Charging_When_Done()
             {
                 CurrentEventArgs currentEventArgs = new CurrentEventArgs();
-                currentEventArgs.Current = 2;
+                currentEventArgs.Current = 150;
+                charger.CurrentValueEvent += Raise.EventWith(currentEventArgs);
 
+                Assert.AreEqual(ChargeControl.ChargeControlState.Charging, _uut.chargeControlState);
+
+                currentEventArgs.Current = 3;
                 charger.CurrentValueEvent += Raise.EventWith(currentEventArgs);
 
                 Assert.AreEqual(ChargeControl.ChargeControlState.Idle, _uut.chargeControlState);

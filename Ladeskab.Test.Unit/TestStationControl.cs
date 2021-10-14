@@ -76,5 +76,14 @@ namespace Ladeskab.Test.Unit
             Door.Received().LockDoor();
             Display.Received().DisplayMsg("Tag din telefon ud af skabet og luk døren");
         }
+
+        [Test]
+        public void TestLadeSkabOpenDoor()
+        {
+            var EventArg = new DoorEventArgs();
+            EventArg.Doorstate = DoorState.DoorOpen;
+            Door.DoorValueEvent += Raise.EventWith(new object(), EventArg);
+            Display.Received().DisplayMsg("Tilslut telefon");
+        }
     }
 }

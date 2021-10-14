@@ -27,7 +27,7 @@
       <FilterEntry>
         <ModuleMask>Ladeskab</ModuleMask>
         <ClassMask>Program</ClassMask>
-        <FunctionMask>Main</FunctionMask>
+        <FunctionMask>*</FunctionMask>
       </FilterEntry>
     </ExcludeFilters>
   </Filters>

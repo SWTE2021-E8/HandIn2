@@ -24,6 +24,11 @@
         <ClassMask>*</ClassMask>
         <FunctionMask>*</FunctionMask>
       </FilterEntry>
+      <FilterEntry>
+        <ModuleMask>Ladeskab</ModuleMask>
+        <ClassMask>Program</ClassMask>
+        <FunctionMask>Main</FunctionMask>
+      </FilterEntry>
     </ExcludeFilters>
   </Filters>
   <!-- Attribute filters. It's possible to use asterisks as wildcard symbols.

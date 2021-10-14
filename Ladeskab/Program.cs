@@ -13,7 +13,7 @@ namespace Ladeskab
             UsbChargerSimulator charger = new UsbChargerSimulator();
             ChargeControl chargeControl = new ChargeControl(charger, display);
             RFIDReader rfidReader = new RFIDReader();
-            StationControl stationControl = new StationControl(door, chargeControl, display, rfidReader);
+            //StationControl stationControl = new StationControl(door, chargeControl, display, rfidReader);
 
 
             bool finish = false;

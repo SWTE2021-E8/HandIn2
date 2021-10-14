@@ -98,7 +98,9 @@ namespace Ladeskab
 
         void IStationControl.RfidDetected(int id)
         {
-            throw new NotImplementedException();
+            RFIDDetectedEventArgs args = new RFIDDetectedEventArgs();
+            args.Rfid = id;
+            RfidDetected(this, args);
         }
 
 
@@ -116,7 +118,8 @@ namespace Ladeskab
 
         void IStationControl.DoorOpened()
         {
-            throw new NotImplementedException();
+            DoorEventArgs args = new DoorEventArgs(DoorState.DoorOpen);
+            DoorOpened(this, args);
         }
 
         private void DoorClosed(object sender, DoorEventArgs e)
@@ -132,7 +135,8 @@ namespace Ladeskab
 
         void IStationControl.DoorClosed()
         {
-            throw new NotImplementedException();
+            DoorEventArgs args = new DoorEventArgs(DoorState.Unlocked);
+            DoorClosed(this, args);
         }
 
         private void LogDoorLocked(int id)

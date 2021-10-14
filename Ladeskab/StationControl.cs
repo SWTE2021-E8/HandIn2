@@ -114,10 +114,10 @@ namespace Ladeskab
             }
         }
 
-        void IStationControl.DoorOpened()
-        {
-            throw new NotImplementedException();
-        }
+        //void IStationControl.DoorOpened()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         private void DoorClosed(object sender, DoorEventArgs e)
         {
@@ -130,10 +130,10 @@ namespace Ladeskab
             }
         }
 
-        void IStationControl.DoorClosed()
-        {
-            throw new NotImplementedException();
-        }
+        //void IStationControl.DoorClosed()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         private void LogDoorLocked(int id)
         {

@@ -79,18 +79,18 @@ namespace Ladeskab.Test.Unit
                 Assert.AreEqual(ChargeControl.ChargeControlState.Error, _uut.chargeControlState);
             }
 
-            public void ChargeControl_StopCharge_WasNotChargingNowIsCharging()
-            {
-                CurrentEventArgs currentEventArgs = new CurrentEventArgs();
-                currentEventArgs.Current = 150;
-                charger.CurrentValueEvent += Raise.EventWith(currentEventArgs);
+            //public void ChargeControl_StopCharge_WasNotChargingNowIsCharging()
+            //{
+            //    CurrentEventArgs currentEventArgs = new CurrentEventArgs();
+            //    currentEventArgs.Current = 150;
+            //    charger.CurrentValueEvent += Raise.EventWith(currentEventArgs);
 
-                _uut.StopCharge();
-                Assert.IsTrue(charger.CurrentValue == 0);
+            //    _uut.StopCharge();
+            //    Assert.IsTrue(charger.CurrentValue == 0);
 
-                _uut.StartCharge();
-                Assert.IsTrue(charger.CurrentValue != 0);
-            }
+            //    _uut.StartCharge();
+            //    Assert.IsTrue(charger.CurrentValue != 0);
+            //}
         }
     }
 }

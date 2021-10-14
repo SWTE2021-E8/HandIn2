@@ -47,5 +47,34 @@ namespace Ladeskab.Test.Unit
             ChargeControl.Received().StartCharge();
         }
 
+        [Test]
+        public void TestRFIDWrong()
+        {
+            ChargeControl.Connected.Returns(true);
+            var EventArg = new RFIDDetectedEventArgs();
+            EventArg.Rfid = 1;
+            Reader.RfidDetectedEvent += Raise.EventWith(new object(), EventArg);
+            Display.Received().DisplayMsg("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
+            Door.Received().LockDoor();
+            EventArg.Rfid = 2;
+            Reader.RfidDetectedEvent += Raise.EventWith(new object(), EventArg);
+            Door.Received().LockDoor();
+            Display.Received().DisplayMsg("Forkert RFID tag");
+        }
+
+        [Test]
+        public void TestCorrectID()
+        {
+            ChargeControl.Connected.Returns(true);
+            var EventArg = new RFIDDetectedEventArgs();
+            EventArg.Rfid = 1;
+            Reader.RfidDetectedEvent += Raise.EventWith(new object(), EventArg);
+            Display.Received().DisplayMsg("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
+            Door.Received().LockDoor();
+            EventArg.Rfid = 1;
+            Reader.RfidDetectedEvent += Raise.EventWith(new object(), EventArg);
+            Door.Received().LockDoor();
+            Display.Received().DisplayMsg("Tag din telefon ud af skabet og luk døren");
+        }
     }
 }

@@ -13,6 +13,16 @@ namespace Ladeskab.Interfaces
     public class DoorEventArgs : EventArgs
     {
         public DoorState Doorstate { get; set; }
+
+        public DoorEventArgs()
+        {
+            this.Doorstate = DoorState.Unlocked;
+        }
+
+        public DoorEventArgs(DoorState state)
+        {
+            this.Doorstate = state;
+        }
     }
 
     public interface IDoor

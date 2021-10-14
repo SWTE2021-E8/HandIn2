@@ -23,7 +23,7 @@ namespace Ladeskab.Test.Unit
         [Test]
         public void DoorIsUnlockedAtStart()
         {
-            Assert.AreEqual(uut.StateValue,DoorState.Unlocked);
+            Assert.AreEqual(uut.StateValue, DoorState.Unlocked);
         }
 
         [Test]
@@ -33,7 +33,7 @@ namespace Ladeskab.Test.Unit
             Assert.AreEqual(uut.StateValue, DoorState.Locked);
 
             uut.UnlockDoor();
-            Assert.AreEqual(uut.StateValue,DoorState.Unlocked);
+            Assert.AreEqual(uut.StateValue, DoorState.Unlocked);
 
         }
 
@@ -48,7 +48,29 @@ namespace Ladeskab.Test.Unit
         public void DoorOpen()
         {
             uut.OnDoorOpen();
-            Assert.AreEqual(uut.StateValue,DoorState.DoorOpen);
+            Assert.AreEqual(uut.StateValue, DoorState.DoorOpen);
+        }
+
+        [Test]
+        public void DoorEventArgs_Default_Constructor()
+        {
+            DoorEventArgs args = new DoorEventArgs();
+            Assert.AreEqual(DoorState.Unlocked, args.Doorstate);
+        }
+
+        [Test]
+        public void DoorEventArgs_Parameterized_Constructor()
+        {
+            DoorEventArgs args = new DoorEventArgs(DoorState.DoorOpen);
+            Assert.AreEqual(DoorState.DoorOpen, args.Doorstate);
+        }
+
+        [Test]
+        public void DoorEventArgs_Test_Set()
+        {
+            DoorEventArgs args = new DoorEventArgs();
+            args.Doorstate = DoorState.Locked;
+            Assert.AreEqual(DoorState.Locked, args.Doorstate);
         }
     }
 

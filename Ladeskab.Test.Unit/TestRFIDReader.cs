@@ -30,11 +30,5 @@ namespace Ladeskab.Test.Unit
             uut.OnRfidRead(a);
             Assert.AreEqual(uut.lastRfidRecieved, a);
         }
-
-        //[Test]
-        //public void TestwithEvent_called()
-        //{
-
-        //}
     }
 }

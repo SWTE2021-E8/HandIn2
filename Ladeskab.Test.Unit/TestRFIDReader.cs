@@ -13,7 +13,7 @@ namespace Ladeskab.Test.Unit
     class TestRFIDReader
     {
         private RFIDReader uut;
-        
+
         [SetUp]
         public void setup()
         {
@@ -28,20 +28,7 @@ namespace Ladeskab.Test.Unit
         public void TestOnRfidRead(int a)
         {
             uut.OnRfidRead(a);
-            Assert.AreEqual(uut.lastRfidRecieved,a);
+            Assert.AreEqual(uut.lastRfidRecieved, a);
         }
-
-        [Test]
-        public void TestwithEvent_called()
-        {
-            var sub = Substitute.For<IRFIDReader>();
-            var EventArg = new RFIDDetectedEventArgs();
-            sub.RfidDetectedEvent += Raise.EventWith(new object(), EventArg);
-            //started not finished NO TEST
-
-
-        }
-
-
     }
 }

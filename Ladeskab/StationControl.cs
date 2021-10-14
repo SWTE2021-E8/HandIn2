@@ -96,10 +96,10 @@ namespace Ladeskab
 
         }
 
-        void IStationControl.RfidDetected(int id)
-        {
-            throw new NotImplementedException();
-        }
+        //void IStationControl.RfidDetected(int id)
+        //{
+          //  throw new NotImplementedException();
+        //}
 
 
         // Her mangler de andre trigger handlere

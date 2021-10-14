@@ -52,7 +52,7 @@ namespace Ladeskab.Test.Unit
             public void ChargeControl_ChargeControlState_ReturnCharging()
             {
                 CurrentEventArgs currentEventArgs = new CurrentEventArgs();
-                currentEventArgs.Current = 0;
+                currentEventArgs.Current = 150;
 
                 charger.CurrentValueEvent += Raise.EventWith(currentEventArgs);
 
@@ -62,11 +62,44 @@ namespace Ladeskab.Test.Unit
             public void ChargeControl_ChargeControlState_ReturnIdle()
             {   
                 CurrentEventArgs currentEventArgs = new CurrentEventArgs();
-                currentEventArgs.Current = 499;
+                currentEventArgs.Current = 500;
 
                 charger.CurrentValueEvent += Raise.EventWith(currentEventArgs);
 
                 Assert.AreEqual(ChargeControl.ChargeControlState.Idle, _uut.chargeControlState);
+            }
+            [Test]
+            public void ChargeControl_ChargeControlState_ReturnError()
+            {
+                CurrentEventArgs currentEventArgs = new CurrentEventArgs();
+                currentEventArgs.Current = 700;
+
+                charger.CurrentValueEvent += Raise.EventWith(currentEventArgs);
+
+                Assert.AreEqual(ChargeControl.ChargeControlState.Error, _uut.chargeControlState);
+            }
+            [Test]
+            public void ChargeControl_StopCharge_WasChargingNowIsNotCharging()
+            {
+                CurrentEventArgs currentEventArgs = new CurrentEventArgs();
+                currentEventArgs.Current = 150;
+                charger.CurrentValueEvent += Raise.EventWith(currentEventArgs);
+
+                Assert.AreEqual(ChargeControl.ChargeControlState.Charging, _uut.chargeControlState);
+
+                _uut.StopCharge();
+                Assert.IsTrue(charger.CurrentValue == 0);
+            }
+
+            public void ChargeControl_StopCharge_WasNotChargingNowIsCharging()
+            {
+                CurrentEventArgs currentEventArgs = new CurrentEventArgs();
+                currentEventArgs.Current = 150;
+
+                Assert.AreEqual(ChargeControl.ChargeControlState.Idle, _uut.chargeControlState);
+
+                _uut.StartCharge();
+                Assert.AreEqual(ChargeControl.ChargeControlState.Charging, _uut.chargeControlState);
             }
         }
     }

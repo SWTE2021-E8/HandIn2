@@ -20,7 +20,7 @@ namespace Ladeskab.Test.Unit
         public void Test_DisplayMsg_Outputs_To_Console()
         {
             // Arrange
-            var expected = "Display: Test\n";
+            var expected = "Display: Test\r\n";
             var output = new StringWriter();
             Console.SetOut(output);
 

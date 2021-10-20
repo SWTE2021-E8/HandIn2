@@ -6,7 +6,7 @@ namespace Ladeskab
     public class RFIDReader : IRFIDReader
     {
         public event EventHandler<RFIDDetectedEventArgs> RfidDetectedEvent;
-        public int lastRfidRecieved { get; private set; }
+        public int LastRfidRecieved { get; private set; }
         public RFIDReader()
         {
         }
@@ -14,7 +14,7 @@ namespace Ladeskab
         public void OnRfidRead(int id)
         {
             HandleRfidDetected(new RFIDDetectedEventArgs { Rfid = id });
-            lastRfidRecieved = id;
+            LastRfidRecieved = id;
         }
 
         protected virtual void HandleRfidDetected(RFIDDetectedEventArgs e)

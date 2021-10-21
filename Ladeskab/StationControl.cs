@@ -28,7 +28,6 @@ namespace Ladeskab
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
-        // Her mangler constructor
         public StationControl(IDoor door, IChargeControl charger, IDisplay display, IRFIDReader rfidReader)
         {
             _state = LadeskabState.Available;
@@ -38,16 +37,14 @@ namespace Ladeskab
             _oldId = 0;
             _rfidReader = rfidReader;
 
-            //Tilføjer rfid handleren til rfid event
             _rfidReader.RfidDetectedEvent += RfidDetected;
             _door.DoorValueEvent += DoorOpened;
             _door.DoorValueEvent += DoorClosed;
         }
 
-        // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
         private void RfidDetected(object sender, RFIDDetectedEventArgs e)
         {
-            //Henter RfId'et fra eventet
+ 
             int id = e.Rfid;
 
             switch (_state)
@@ -96,13 +93,7 @@ namespace Ladeskab
 
         }
 
-        //void IStationControl.RfidDetected(int id)
-        //{
-          //  throw new NotImplementedException();
-        //}
-
-
-        // Her mangler de andre trigger handlere
+     
         private void DoorOpened(object sender, DoorEventArgs e)
         {
             DoorState doorState = e.Doorstate;
@@ -114,11 +105,7 @@ namespace Ladeskab
             }
         }
 
-        //void IStationControl.DoorOpened()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
+    
         private void DoorClosed(object sender, DoorEventArgs e)
         {
             DoorState doorState = e.Doorstate;
@@ -129,11 +116,6 @@ namespace Ladeskab
                 _display.DisplayMsg("Indlæs RFID");
             }
         }
-
-        //void IStationControl.DoorClosed()
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         private void LogDoorLocked(int id)
         {

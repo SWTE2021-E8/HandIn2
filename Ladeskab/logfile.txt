@@ -5,3 +5,4 @@
 08/10/2021 09.33.08: Skab låst med RFID: 2
 08/10/2021 09.43.18: Skab låst med RFID: 1
 08/10/2021 09.47.12: Skab låst med RFID: 1
+21/10/2021 11.40.49: Skab låst med RFID: 1

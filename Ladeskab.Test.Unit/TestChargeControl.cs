@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace Ladeskab.Test.Unit
 {
-    class ChargeControlTests
+    class TestChargeControl
     {
         [TestFixture]
         public class TestUsbChargerSimulator
@@ -53,21 +53,10 @@ namespace Ladeskab.Test.Unit
             }
 
             [Test]
-            public void ChargeControl_ChargeControlState_ReturnCharging()
+            public void ChargeControl_ChargeControlState_ReturnIdle_1mA()
             {
                 CurrentEventArgs currentEventArgs = new CurrentEventArgs();
-                currentEventArgs.Current = 150;
-
-                charger.CurrentValueEvent += Raise.EventWith(currentEventArgs);
-
-                Assert.AreEqual(ChargeControl.ChargeControlState.Charging, _uut.chargeControlState);
-            }
-
-            [Test]
-            public void ChargeControl_ChargeControlState_ReturnIdle()
-            {
-                CurrentEventArgs currentEventArgs = new CurrentEventArgs();
-                currentEventArgs.Current = 500;
+                currentEventArgs.Current = 1;
 
                 charger.CurrentValueEvent += Raise.EventWith(currentEventArgs);
 
@@ -75,10 +64,43 @@ namespace Ladeskab.Test.Unit
             }
 
             [Test]
+            public void ChargeControl_ChargeControlState_ReturnIdle_5mA()
+            {
+                CurrentEventArgs currentEventArgs = new CurrentEventArgs();
+                currentEventArgs.Current = 5;
+
+                charger.CurrentValueEvent += Raise.EventWith(currentEventArgs);
+
+                Assert.AreEqual(ChargeControl.ChargeControlState.Idle, _uut.chargeControlState);
+            }
+
+            [Test]
+            public void ChargeControl_ChargeControlState_ReturnCharging_6mA()
+            {
+                CurrentEventArgs currentEventArgs = new CurrentEventArgs();
+                currentEventArgs.Current = 6;
+
+                charger.CurrentValueEvent += Raise.EventWith(currentEventArgs);
+
+                Assert.AreEqual(ChargeControl.ChargeControlState.Charging, _uut.chargeControlState);
+            }
+
+            [Test]
+            public void ChargeControl_ChargeControlState_ReturnCharging_500mA()
+            {
+                CurrentEventArgs currentEventArgs = new CurrentEventArgs();
+                currentEventArgs.Current = 500;
+
+                charger.CurrentValueEvent += Raise.EventWith(currentEventArgs);
+
+                Assert.AreEqual(ChargeControl.ChargeControlState.Charging, _uut.chargeControlState);
+            }
+
+            [Test]
             public void ChargeControl_ChargeControlState_ReturnError()
             {
                 CurrentEventArgs currentEventArgs = new CurrentEventArgs();
-                currentEventArgs.Current = 700;
+                currentEventArgs.Current = 501;
 
                 charger.CurrentValueEvent += Raise.EventWith(currentEventArgs);
 

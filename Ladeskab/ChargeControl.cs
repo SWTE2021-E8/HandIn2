@@ -40,13 +40,13 @@ namespace Ladeskab
         {
             Current = e.Current;
 
-            if (Current > 0 && Current < 5 && chargeControlState != ChargeControlState.Idle)
+            if (Current > 0 && Current <= 5 && chargeControlState != ChargeControlState.Idle)
             {
                 _display.DisplayMsg("Telefonen er fuldt opladet.");
                 _charger.StopCharge();
                 chargeControlState = ChargeControlState.Idle;
             }
-            else if (Current > 5 && Current < 500 && chargeControlState != ChargeControlState.Charging)
+            else if (Current > 5 && Current <= 500 && chargeControlState != ChargeControlState.Charging)
             {
                 _display.DisplayMsg("Opladning igang.");
                 _charger.StartCharge();
